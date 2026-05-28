@@ -2,9 +2,16 @@ import random
 import string
 
 def generate_password(length: int, use_uppercase: bool, use_digits: bool, use_symbols: bool) -> str:
-    
+    """
+    Generates a password based on the given parameters.
+    :param length: password length
+    :param use_uppercase: whether to include uppercase letters
+    :param use_digits: whether to include digits
+    :param use_symbols: whether to include special characters
+    :return: generated password
+    """
     if length < 1:
-        raise ValueError("Довжина пароля має бути більше нуля.")
+        raise ValueError("Password length must be greater than zero.")
 
     characters = string.ascii_lowercase
     if use_uppercase:
@@ -15,12 +22,16 @@ def generate_password(length: int, use_uppercase: bool, use_digits: bool, use_sy
         characters += string.punctuation
 
     if not characters:
-        raise ValueError("Необхідно вибрати хоча б один набір символів!")
+        raise ValueError("At least one character set must be selected!")
 
     return ''.join(random.choice(characters) for _ in range(length))
 
 def assess_strength(password: str) -> str:
-
+    """
+    Assesses the strength of a password based on its length and character variety.
+    :param password: password to check
+    :return: text evaluation of strength (Weak, Medium, Strong)
+    """
     score = 0
     if len(password) >= 8:
         score += 1
@@ -34,8 +45,8 @@ def assess_strength(password: str) -> str:
         score += 1
 
     if score < 2:
-        return "Слабкий"
+        return "Weak"
     elif score < 4:
-        return "Середній"
+        return "Medium"
     else:
-        return "Надійний"
+        return "Strong"
