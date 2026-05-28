@@ -1,6 +1,5 @@
 import unittest
-import sys
-import os
+
 
 from generator import generate_password, assess_strength
 
