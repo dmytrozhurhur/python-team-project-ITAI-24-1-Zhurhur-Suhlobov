@@ -1,0 +1,4 @@
+length=14
+use_uppercase=true
+use_digits=true
+use_symbols=true
