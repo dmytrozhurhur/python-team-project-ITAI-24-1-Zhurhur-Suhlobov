@@ -1,6 +1,5 @@
 import unittest
 
-
 from generator import generate_password, assess_strength
 
 class TestPasswordGenerator(unittest.TestCase):
